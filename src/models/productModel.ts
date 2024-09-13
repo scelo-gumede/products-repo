@@ -14,20 +14,13 @@ interface Prod extends Document{
 }
 
 const ProductSchema = new Schema<Prod>({
-    name:{
-        type:String,
-        required:true
-    },
-    price:{
-        type:Number,
-        minLength:[0,"the price cant be negative"],
-        required:true
-    },
+    name:String,
+    price:Number,
     category:{
         type:String,
         enum:{
             values:["boys","girls","children"],
-            message:`pass in the required values`
+            message:"not supported",
         }   
     },
     
@@ -35,26 +28,21 @@ const ProductSchema = new Schema<Prod>({
         type:Boolean,
         default:false
     },
-    createdAt:{
-        type:Date,
-        default:new Date().getDate()
-    },
-    updatedAt:{
-        type:Date,
-        default:new Date().getDate()
-    },
+    
+   
     description:{
         type:String,
-        minlength:[20,"there atleast needs to minimum of 20 characters"]
+      
     },
     brand:{
-        types:String,
+        type:String,
         enum:{
-            values:["nike","adidas","reebok","puma"]
+            values:["nike","adidas","reebok","puma"],
+            message:"not supported"
         }
     }
 
-})
+},{timestamps:true})
 
 
 export default mongoose.model<Prod>("products",ProductSchema)

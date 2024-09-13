@@ -5,6 +5,9 @@ import  express  from "express";
 import router from "./routes/product";
 const app = express()
 
+//middleware
+app.use(express.json())
+
 
 
 //routes
